@@ -36,17 +36,23 @@ public class Aluno extends Pessoa {
 
     @Override
     public String exibirDados() {
-                DateTimeFormatter formato = 
-                DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        
+        DateTimeFormatter formato
+                = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
         String aux = super.exibirDados();
         aux += "\nMatricula: " + matricula;
-        if(dataMatricula !=null){
-            aux += "\nData de Matricula: "+ formato.format(dataMatricula);
+        if (dataMatricula != null) {
+            aux += "\nData de Matricula: " + formato.format(dataMatricula);
         }
         aux += "\nAvaliações Físicas Realizadas: "
                 + avaliacoes.size();
-        aux += "\nValor Mensalidade: R$ "+valorMensalidade;
+
+        if (plano != null) {
+            aux += String.format("\nPlano: %s - R$ %.2f", plano.getNome(), valorMensalidade);
+        } else {
+            aux += String.format("\nPlano: Não definido - R$ %.2f", valorMensalidade);
+        }
+
         aux += "\n";
         return aux;
     }
@@ -79,15 +85,14 @@ public class Aluno extends Pessoa {
     public void verificaDesconto() {
         int anos = Period.between(dataMatricula, LocalDate.now()).getYears();
         int meses = Period.between(dataMatricula, LocalDate.now()).getMonths();
-        meses += anos*12;
+        meses += anos * 12;
         if (plano != null) {
             valorMensalidade = plano.getValor();
 
             if (meses >= 3) {
                 valorMensalidade -= (valorMensalidade * 0.1);
             } else {
-
-                System.out.println("Aluno não possui o tempo necessário para obter desconto !");
+                //System.out.println("Aluno não possui o tempo necessário para obter desconto !");
             }
         } else {
             System.out.println("Aluno não possui plano selecionado. Informe o plano do aluno:");

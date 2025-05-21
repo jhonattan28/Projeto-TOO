@@ -47,4 +47,17 @@ public class AlunoConvenio extends Aluno {
 
     }
 
+    @Override
+    public String exibirDados() {
+        String dadosBase = super.exibirDados();
+
+        if (convenio != null) {
+            dadosBase += String.format("Convênio: %s - %.0f%%\n", convenio.getNome(), convenio.getDesconto());
+        } else {
+            dadosBase += "Convênio: Não informado\n";
+        }
+
+        return dadosBase;
+    }
+
 }
