@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Pessoa {
+public abstract class Pessoa implements Exibivel{
 
     // atributos
     private LocalDate dataNascimento;
@@ -76,7 +76,6 @@ public abstract class Pessoa {
     public String toString() {
         return nome;
     }
-    
     
     
 }

@@ -6,6 +6,7 @@ import modelo.Aluno;
 import modelo.AlunoConvenio;
 import modelo.AvaliacaoFisica;
 import modelo.Convenio;
+import modelo.Impressora;
 import modelo.Plano;
 import modelo.Professor;
 
@@ -22,7 +23,8 @@ public class TesteHeranca {
         plano1.setNome("Basico");
         plano1.setDescricao("Acesso a musculação liberado.");
         plano1.setValor(100);
-
+        //System.out.println(plano1.exibirDados());
+        //System.out.println("\n");
         Plano plano2 = new Plano();
         plano2.setNome("Premium");
         plano2.setDescricao("Acesso a total da academia liberado.");
@@ -59,11 +61,16 @@ public class TesteHeranca {
         alunoC.adicionarAvaliacao(av1);
         av1.setProfessor(p);
 
-        System.out.println(av1.exibirDados());
-        System.out.println("----");
-        
-        System.out.println(alunoN1.exibirDados());
-        System.out.println(alunoC.exibirDados());
-        System.out.println(alunoN2.exibirDados());
+        //System.out.println(av1.exibirDados());
+        //System.out.println("----");
+        //System.out.println(alunoN1.exibirDados());
+        //System.out.println(alunoC.exibirDados());
+        //System.out.println(alunoN2.exibirDados());
+        Impressora.imprimirDados(p); //P É UMA INSTANCIA de professor
+        Impressora.imprimirDados(plano1); //plano 1 é ums instancia de plano
+        Impressora.imprimirDados(plano2);
+        Impressora.imprimirDados(av1); //av1 é uma instancia de AvaliacaoFisica
+        Impressora.imprimirDados(alunoN1); //alunoN1 é uma instancia de Aluno
+        Impressora.imprimirDados(alunoC); //alunoC é ums instancia de AlunoConvenio
     }
 }

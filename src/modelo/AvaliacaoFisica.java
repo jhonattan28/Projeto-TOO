@@ -4,8 +4,8 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
-public class AvaliacaoFisica {
-    private Aluno aluno;
+public class AvaliacaoFisica implements Exibivel {
+    private final Aluno aluno;
     private LocalDate data;
     private double peso;
     private double altura;
